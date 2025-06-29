@@ -59,17 +59,27 @@ docker run -p 3000:3000 profast
 ## Project Structure
 
 ```
-front-end/
-  app/
-    components/ui/      # Reusable UI components (Button, Dialog, Switch, ThemeSwitcher)
-    lib/                # Utility functions
-    routes/             # App routes (e.g., home)
-    public/             # Static assets (images, animations, data)
-    app.css             # TailwindCSS and theme variables
-    root.tsx            # App layout and theme switcher integration
-  package.json          # Project dependencies and scripts
-  tsconfig.json         # TypeScript configuration
-  vite.config.ts        # Vite configuration
++---.react-router
+ª   +---types
+ª       +---app
+ª           +---+types
+ª           +---routes
+ª               +---+types
++---app
+ª   +---components
+ª   ª   +---ui
+ª   +---lib
+ª   +---routes
+ª   +---welcome
++---public
+    +---resources
+        +---animations
+        +---assets
+        ª   +---banner
+        ª   +---brands
+        ª   +---json
+        +---data
+
 ```
 
 ## Styling & Theming
