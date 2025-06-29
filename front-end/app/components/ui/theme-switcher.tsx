@@ -14,6 +14,10 @@ const themes = [
   { name: "Frappe", className: "catppuccin-frappe" },
   { name: "Macchiato", className: "catppuccin-macchiato" },
   { name: "Mocha", className: "catppuccin-mocha" },
+  { name: "catppuccin", className: "catppuccin" },
+  { name: "caffeine", className: "caffeine" },
+  { name: "catppuccin-dark", className: "catppuccin-dark" },
+  { name: "caffeine-dark", className: "caffeine-dark" },
 ];
 
 export function ThemeSwitcher() {
