@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from "~/components/ui/dialog";
 import { Switch } from "~/components/ui/switch"; // <-- import Switch
+import { Button } from "./button";
 
 const themes = [
   { name: "Latte", className: "catppuccin-latte" },
@@ -36,13 +37,13 @@ export function ThemeSwitcher() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button
-          className="px-3 py-1 rounded bg-muted text-muted-foreground hover:bg-accent transition"
+        <Button
+          // className="px-3 py-1 rounded bg-muted text-muted-foreground hover:bg-accent transition"
           type="button"
           aria-label="Open theme switcher"
         >
-          Theme
-        </button>
+          {theme}
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
