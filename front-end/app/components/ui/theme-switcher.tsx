@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import React from "react";
 import {
@@ -50,7 +50,7 @@ export function ThemeSwitcher() {
   React.useEffect(() => {
     if (typeof window === "undefined") return;
     document.documentElement.classList.remove(
-      ...themes.map((t) => t.className),
+      ...themes.map((t) => t.className)
     );
     document.documentElement.classList.add(theme);
     localStorage.getItem("theme") == "" && localStorage.setItem("theme", theme);
