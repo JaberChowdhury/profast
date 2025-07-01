@@ -38,10 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="w-full flex justify-center items-center flex-col">
-        {/* <div style={{ position: "fixed", top: 16, right: 16, zIndex: 100 }}>
-          <ThemeSwitcher />
-        </div> */}
+      <body className="w-full min-h-screen flex justify-start items-center flex-col">
         <Navbar />
         {children}
         <ScrollRestoration />

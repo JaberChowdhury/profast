@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../ui/button";
 import { FaArrowRight } from "react-icons/fa6";
 import { motion } from "motion/react";
-import { Scale } from "lucide-react";
 import { ThemeSwitcher } from "../ui/theme-switcher";
 import { IoSettingsSharp } from "react-icons/io5";
 import {
@@ -12,10 +11,43 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog";
+import { Link } from "react-router";
 
 const Navbar = () => {
+  const links = [
+    {
+      title: "Services",
+      to: "/services",
+    },
+    {
+      title: "Coverage",
+      to: "/coverage",
+    },
+    {
+      title: "About us",
+      to: "/about",
+    },
+    {
+      title: "Pricing",
+      to: "/pricing",
+    },
+    {
+      title: "Be a Rider",
+      to: "/Be_a_Rider",
+    },
+  ];
   return (
-    <div className="flex justify-between items-center bg-[#ffffff] w-4/5 py-4 mt-8 px-6">
+    <motion.div
+      initial={{
+        y: -120,
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className="flex justify-between items-center bg-[#ffffff] w-4/5 py-4 mt-8 px-6 rounded-2xl"
+    >
       <div className="flex justify-center items-center relative">
         <img
           src="/resources/assets/logo.png"
@@ -27,36 +59,67 @@ const Navbar = () => {
       </div>
       <div>
         <nav>
-          <ul className="flex gap-x-5 text-xl font-bold text-[#606060]">
-            <li>
-              <a href="/">Services</a>
-            </li>
-            <li>
-              <a href="/Coverage">Coverage</a>
-            </li>
-            <li>
-              <a href="/about">About us</a>
-            </li>
-            <li>
-              <a href="/Pricing">Pricing</a>
-            </li>
-            <li>
-              <a href="/register">Be a Rider</a>
-            </li>
-          </ul>
+          <motion.ul
+            initial={{
+              opacity: 0,
+              y: -12,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.25,
+            }}
+            className="flex gap-x-5 text-xl font-bold text-[#606060]"
+          >
+            {links.map((data, id) => (
+              <li key={id}>
+                <Link to={data.to}>{data.title}</Link>
+              </li>
+            ))}
+          </motion.ul>
         </nav>
       </div>
       <div className="flex space-x-4 justify-center items-center">
-        <div>
+        <motion.div
+          initial={{
+            scale: 0.4,
+            opacity: 0,
+            x: 10,
+          }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            delay: 0.25,
+          }}
+        >
           <Button variant="outline">
             <span>Sign In</span>
           </Button>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{
+            scale: 0.4,
+            opacity: 0,
+            x: 10,
+          }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            delay: 0.25,
+          }}
+        >
           <Button>
             <span>Sign Up</span>
           </Button>
-        </div>
+        </motion.div>
         <motion.div
           className="p-5 rounded-full bg-black"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -86,7 +149,7 @@ const Navbar = () => {
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
