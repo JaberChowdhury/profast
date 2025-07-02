@@ -1,6 +1,5 @@
 import { useInView, motion } from "motion/react";
-import React, { useRef, useState, useEffect } from "react";
-import BlurImage from "./BlurImage";
+import React, { useRef } from "react";
 
 const Our_servicesv2 = () => {
   const data = [
@@ -23,29 +22,31 @@ const Our_servicesv2 = () => {
         "Our dedicated support team is available around the clock to assist you with any questions, updates, or delivery concerns—anytime you need us.",
     },
   ];
-
   return (
     <div className="space-y-9">
       {data.map((d, id) => {
         const ref = useRef(null);
-        const isInView = useInView(ref, { amount: 0.2 });
-
+        const isInView = useInView(ref, {
+          amount: 0.2,
+          //   margin: "0px 100px -50px 0px",
+        });
         return (
           <motion.div
             key={id}
             className="flex justify-between items-center bg-white p-9 rounded-md shadow-none hover:shadow-2xl"
           >
-            <div className="w-1/6">
-              <BlurImage src={d.img} alt={d.title} />
+            <div>
+              <img src={d.img} alt={d.title} loading="lazy" />
             </div>
             <motion.div
               ref={ref}
               initial={{ opacity: 0, scale: 0 }}
+              //   animate={{ opacity: 1, scale: 1 }}
               animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
               transition={{ delay: id * 0.3 }}
-              className="h-60 border-l-3 border-l-slate-400 border-dashed mx-20"
-            />
-            <div className="w-4/5 flex justify-between space-y-9 items-center flex-col h-full">
+              className="h-60 border-l-3 border-l-slate-400 border-dashed"
+            ></motion.div>
+            <div className=" w-4/5  flex justify-between space-y-9 items-center flex-col h-full">
               <p className="text-2xl font-bold w-full">{d.title}</p>
               <p className="w-full">{d.description}</p>
             </div>
