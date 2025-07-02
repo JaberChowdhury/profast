@@ -19,7 +19,7 @@ body {
   font-optical-sizing: auto;
   /* font-weight: <weight>; */
   font-style: normal;
-  transition: all 2ms;
+  transition: all 5ms;
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
