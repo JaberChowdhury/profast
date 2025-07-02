@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button } from "../ui/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { ThemeSwitcher } from "../ui/theme-switcher";
 import { IoSettingsSharp } from "react-icons/io5";
 import {
@@ -36,15 +36,19 @@ const Navbar = () => {
       to: "/Be_a_Rider",
     },
   ];
+
+  const main_parents = useRef(null);
+  const isInView = useInView(main_parents);
   return (
     <motion.div
+      ref={main_parents}
       initial={{
         y: -120,
         opacity: 0,
       }}
       animate={{
-        opacity: 1,
-        y: 0,
+        opacity: isInView ? 1 : 0,
+        y: isInView ? 0 : -120,
       }}
       className="flex justify-between items-center bg-[#ffffff] w-4/5 py-4 mt-8 px-6 rounded-2xl"
     >
