@@ -59,27 +59,40 @@ docker run -p 3000:3000 profast
 ## Project Structure
 
 ```
-+---.react-router
-ª   +---types
-ª       +---app
-ª           +---+types
-ª           +---routes
-ª               +---+types
-+---app
-ª   +---components
-ª   ª   +---ui
-ª   +---lib
-ª   +---routes
-ª   +---welcome
-+---public
-    +---resources
-        +---animations
-        +---assets
-        ª   +---banner
-        ª   +---brands
-        ª   +---json
-        +---data
-
+├───.react-router
+│   └───types
+│       └───app
+│           ├───+types
+│           └───routes
+│               └───+types
+├───.vercel
+├───app
+│   ├───components
+│   │   ├───custom
+│   │   └───ui
+│   ├───lib
+│   ├───routes
+│   ├───src
+│   │   ├───data
+│   │   └───json
+│   └───welcome
+├───build
+│   ├───client
+│   │   ├───assets
+│   │   └───resources
+│   │       ├───animations
+│   │       └───assets
+│   │           ├───banner
+│   │           └───brands
+│   └───server
+│       └───nodejs_eyJydW50aW1lIjoibm9kZWpzIn0
+│           └───.vite
+└───public
+    └───resources
+        ├───animations
+        └───assets
+            ├───banner
+            └───brands
 ```
 
 ## Styling & Theming
