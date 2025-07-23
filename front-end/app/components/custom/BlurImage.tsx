@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
+import type { ImgHTMLAttributes } from "react";
+import { cn } from "~/lib/utils";
 
-// Improved BlurImage component
-const BlurImage = ({ src, alt }: { src: string; alt: string }) => {
+type BlurImageProps = ImgHTMLAttributes<HTMLImageElement>;
+
+const BlurImage = ({ className = "", ...props }: BlurImageProps) => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Check if image is already loaded (cached)
     if (imgRef.current?.complete) {
       setLoaded(true);
     }
@@ -16,15 +18,16 @@ const BlurImage = ({ src, alt }: { src: string; alt: string }) => {
     <div className="relative overflow-hidden">
       <img
         ref={imgRef}
-        src={src}
-        alt={alt}
-        className={`block w-full h-auto transition-filter duration-500 ease-out ${
-          loaded ? "blur-none" : "blur-xl"
-        }`}
+        className={cn(
+          "block w-full h-auto transition-filter duration-500 ease-out",
+          loaded ? "blur-none" : "blur-xl",
+          className
+        )}
         onLoad={() => setLoaded(true)}
         onError={() => setLoaded(true)}
+        {...props}
       />
-      {!loaded && <div className="absolute inset-0 bg-gray-100 -z-10" />}
+      {/* {!loaded && <div className="absolute inset-0 bg-gray-100 -z-10" />} */}
     </div>
   );
 };

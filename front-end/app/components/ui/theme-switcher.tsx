@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import React from "react";
 import {
@@ -23,7 +23,6 @@ const themes = [
   { name: "caffeine-dark", className: "caffeine-dark" },
 ];
 
-// Animation variants
 const containerVariants = {
   hidden: {},
   visible: {
@@ -39,21 +38,26 @@ const itemVariants = {
 };
 
 export function ThemeSwitcher() {
-  const [theme, setTheme] = React.useState("catppuccin-latte");
+  // Initialize theme from localStorage safely
+  const [theme, setTheme] = React.useState(() => {
+    if (typeof window === "undefined") return "catppuccin-latte";
+    return localStorage.getItem("theme") || "catppuccin-latte";
+  });
 
+  // Update <html> class and localStorage when theme changes
   React.useEffect(() => {
     if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("theme") || "catppuccin-latte";
-    setTheme(stored);
-  }, []);
 
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    document.documentElement.classList.remove(
-      ...themes.map((t) => t.className)
-    );
+    // Remove all theme classes first
+    themes.forEach((t) => {
+      document.documentElement.classList.remove(t.className);
+    });
+
+    // Add current theme class
     document.documentElement.classList.add(theme);
-    localStorage.getItem("theme") == "" && localStorage.setItem("theme", theme);
+
+    // Save current theme to localStorage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
@@ -63,6 +67,7 @@ export function ThemeSwitcher() {
           {theme}
         </Button>
       </DialogTrigger>
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Switch Theme</DialogTitle>
@@ -83,7 +88,9 @@ export function ThemeSwitcher() {
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") setTheme(t.className);
+                if (e.key === "Enter" || e.key === " ") {
+                  setTheme(t.className);
+                }
               }}
             >
               <span
