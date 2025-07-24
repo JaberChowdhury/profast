@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from "~/components/ui/dialog";
 import { Link } from "react-router";
+import BlurImage from "./BlurImage";
 
 const Navbar = () => {
   const links = [
@@ -53,7 +54,7 @@ const Navbar = () => {
       className="flex justify-between items-center bg-[#ffffff] w-4/5 py-4 mt-8 px-6 rounded-2xl"
     >
       <div className="flex justify-center items-center relative">
-        <img
+        <BlurImage
           src="/resources/assets/logo.png"
           alt="Logo"
           loading="lazy"

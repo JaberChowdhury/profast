@@ -6,6 +6,9 @@ import Our_services from "~/components/custom/Our_services";
 import Our_servicesv2 from "~/components/custom/Our_servicesv2";
 import HorzintalSeparator from "~/components/custom/HorzintalSeparator";
 import Invitation from "~/components/custom/Invitation";
+import Customer_review from "~/components/custom/Customer_review";
+import Faq from "~/components/custom/Faq";
+import Footer from "~/components/custom/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,6 +28,9 @@ export default function Home() {
       <Our_servicesv2 />
       <HorzintalSeparator />
       <Invitation />
+      <Customer_review />
+      <Faq />
+      <Footer />
     </div>
   );
 }
